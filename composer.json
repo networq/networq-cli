@@ -1,0 +1,31 @@
+{
+    "name": "networq/networq-cli",
+    "description": "Web-based Networq browser",
+    "homepage": "http://www.github.com/networq/networq-web",
+    "keywords": ["networq", "graph", "modeling", "linkorb"],
+    "type": "application",
+    "authors": [
+        {
+            "name": "LinkORB Engineering",
+            "email": "engineering@linkorb.com",
+            "role": "Development"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "networq/networq": "^1.0",
+        "symfony/console": "^4.0",
+        "symfony/process": "^4.0",
+        "symfony/yaml": "^4.0",
+        "symfony/dotenv": "^4.0"
+    },
+    "require-dev": {
+        "linkorb/autotune": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Networq\\Cli\\": "src/"
+        }
+    },
+    "license": "MIT"
+}
