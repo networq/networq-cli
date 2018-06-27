@@ -1,7 +1,7 @@
 Networq CLI
 ===========
 
-Command-line utilities + package manager for Networq projects
+Command-line utilities + package manager for your [Networq](https://github.com/networq) projects
 
 ## Usage
 
@@ -51,7 +51,7 @@ This means that `networq install` will always make sure you have the latest vers
 ### Package naming + repository naming
 
 Dependencies are listed as `ownerName/packageName`, i.e. `acme/cooking`. The package manager will
-then clone this package from `https://github/ownerName/packageName-package. In this case `https://github.com/acme/cooking-package`.
+then clone this package from `https://github/ownerName/packageName-package`. In this case `https://github.com/acme/cooking-package`.
 
 ### Development / testing
 
