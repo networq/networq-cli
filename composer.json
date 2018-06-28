@@ -20,12 +20,17 @@
         "symfony/dotenv": "^4.0"
     },
     "require-dev": {
-        "linkorb/autotune": "^1.0"
+        "linkorb/autotune": "^1.0",
+        "seld/phar-utils": "^1.0",
+        "symfony/finder": "^4.1"
     },
     "autoload": {
         "psr-4": {
             "Networq\\Cli\\": "src/"
         }
+    },
+    "scripts": {
+        "build-phar": "Networq\\Cli\\Utils\\Compiler::buildPhar"
     },
     "license": "MIT"
 }

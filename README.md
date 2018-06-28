@@ -53,6 +53,14 @@ This means that `networq install` will always make sure you have the latest vers
 Dependencies are listed as `ownerName/packageName`, i.e. `acme/cooking`. The package manager will
 then clone this package from `https://github/ownerName/packageName-package`. In this case `https://github.com/acme/cooking-package`.
 
+### Build phar
+
+To build phar file set _phar.readonly=0_ in php.ini
+
+    composer build-phar
+    
+        
+
 ### Development / testing
 
 This package uses the [Networq PHP library](https://github.com/networq/networq-php) to do most of the heavy lifting.
