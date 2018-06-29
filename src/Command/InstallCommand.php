@@ -36,11 +36,12 @@ class InstallCommand extends Command
         if ($path) {
             chdir($path);
         }
-        $output->writeLn("Working directory: " . getcwd());
+        $workingDir = getcwd();
+        $output->writeLn("Working directory: " . $workingDir);
 
         $graph = new Graph('test');
 
-        $this->install($graph, 'package.yaml', $output);
+        $this->install($graph, $workingDir . '/package.yaml', $output);
 
         exit("DONE" . PHP_EOL);
     }

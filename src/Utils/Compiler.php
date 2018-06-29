@@ -81,7 +81,16 @@ class Compiler
         self::addBin($phar);
         $phar->stopBuffering();
 
-        $phar->setStub($phar->createDefaultStub('bin/networq'));
+        $stub = <<<'STUB'
+#!/usr/bin/env php
+<?php
+
+Phar::mapPhar('networq.phar');
+            
+require 'phar://networq.phar/bin/networq';
+__HALT_COMPILER();
+STUB;
+        $phar->setStub($stub);
 
         unset($phar);
 
@@ -89,6 +98,8 @@ class Compiler
         $util = new Timestamps($fileName);
         $util->updateTimestamps(new \DateTime());
         $util->save($fileName, \Phar::SHA1);
+
+        chmod($fileName, 0755);
     }
 
     /**

@@ -33,11 +33,12 @@ class PackageCommand extends Command
         if ($path) {
             chdir($path);
         }
-        $output->writeLn("Working directory: " . getcwd());
+        $workingDir = getcwd();
+        $output->writeLn("Working directory: " . $workingDir);
 
         $graph = new Graph('test');
         $loader = new PackageLoader();
-        $package = $loader->load($graph, 'package.yaml');
+        $package = $loader->load($graph, $workingDir . '/package.yaml');
 
         $output->writeLn("Name: <info>" . $package->getName() . '</info>');
         $output->writeLn("Description: <info>" . $package->getDescription() . '</info>');
