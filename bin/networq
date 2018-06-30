@@ -36,4 +36,6 @@ $application->setCatchExceptions(true);
 $application->add(new \Networq\Cli\Command\PackageCommand());
 $application->add(new \Networq\Cli\Command\InstallCommand());
 $application->add(new \Networq\Cli\Command\LinkCommand());
+$application->add(new \Networq\Cli\Command\GraphNodesCommand());
+$application->add(new \Networq\Cli\Command\GraphNodeCommand());
 $application->run();
