@@ -35,4 +35,5 @@ $application = new Application('Networq', '1.0.0');
 $application->setCatchExceptions(true);
 $application->add(new \Networq\Cli\Command\PackageCommand());
 $application->add(new \Networq\Cli\Command\InstallCommand());
+$application->add(new \Networq\Cli\Command\LinkCommand());
 $application->run();
