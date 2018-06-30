@@ -40,7 +40,7 @@ class PackageCommand extends Command
         $loader = new PackageLoader();
         $package = $loader->load($graph, $workingDir . '/package.yaml');
 
-        $output->writeLn("Name: <info>" . $package->getName() . '</info>');
+        $output->writeLn("FQPN: <info>" . $package->getFqpn() . '</info>');
         $output->writeLn("Description: <info>" . $package->getDescription() . '</info>');
         $output->writeLn("License: <info>" . $package->getLicense() . '</info>');
         $output->writeLn("Dependencies: ");
