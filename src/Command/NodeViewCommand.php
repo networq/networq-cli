@@ -11,12 +11,17 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class GraphNodesCommand extends Command
+class NodeViewCommand extends Command
 {
     public function configure()
     {
-        $this->setName('graph:nodes')
-            ->setDescription('List nodes')
+        $this->setName('node:view')
+            ->setDescription('View a node')
+            ->addArgument(
+                'fqnn',
+                InputArgument::REQUIRED,
+                'Fully Qualified Node Node (FQNN)'
+            )
             ->addOption(
                 'path',
                 null,
@@ -28,6 +33,7 @@ class GraphNodesCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $fqnn = $input->getArgument('fqnn');
         $path = $input->getOption('path');
         if ($path) {
             chdir($path);
@@ -37,13 +43,13 @@ class GraphNodesCommand extends Command
 
         $loader = new GraphLoader();
         $graph = $loader->load($workingDir . '/package.yaml');
-        foreach ($graph->getPackages() as $package) {
-            $output->writeLn("Package: <info>" . $package->getFqpn() . '</info>');
-            foreach ($package->getNodes() as $node) {
-                $output->writeLn("   <comment>" . $node->getFqnn() . '</comment>');
+        $node = $graph->getNode($fqnn);
+        foreach ($node->getTags() as $tag) {
+            $output->writeLn('<info>' . $tag->getType()->getFqtn() . '</info>');
+            foreach ($tag->getProperties() as $p) {
+                $value = $p->getValueString();
+                $output->writeLn(' - <info>' . $p->getField()->getName() . '</info> <comment>' . $value . '</comment>');
             }
         }
-
-        exit("DONE" . PHP_EOL);
     }
 }

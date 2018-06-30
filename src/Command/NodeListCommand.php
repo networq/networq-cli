@@ -3,8 +3,7 @@
 namespace Networq\Cli\Command;
 
 use RuntimeException;
-use Networq\Cli\AutoGraphLoader;
-use Networq\Loader\PackageLoader;
+use Networq\Loader\GraphLoader;
 use Networq\Model\Graph;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,12 +11,12 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class PackageCommand extends Command
+class NodeListCommand extends Command
 {
     public function configure()
     {
-        $this->setName('package')
-            ->setDescription('Show package information')
+        $this->setName('node:list')
+            ->setDescription('List nodes')
             ->addOption(
                 'path',
                 null,
@@ -36,16 +35,13 @@ class PackageCommand extends Command
         $workingDir = getcwd();
         $output->writeLn("Working directory: " . $workingDir);
 
-        $graph = new Graph('test');
-        $loader = new PackageLoader();
-        $package = $loader->load($graph, $workingDir . '/package.yaml');
-
-        $output->writeLn("FQPN: <info>" . $package->getFqpn() . '</info>');
-        $output->writeLn("Description: <info>" . $package->getDescription() . '</info>');
-        $output->writeLn("License: <info>" . $package->getLicense() . '</info>');
-        $output->writeLn("Dependencies: ");
-        foreach ($package->getDependencies() as $dependency) {
-            $output->writeLn(' - <info>' . $dependency->getName() . '</info> ' . $dependency->getVersion());
+        $loader = new GraphLoader();
+        $graph = $loader->load($workingDir . '/package.yaml');
+        foreach ($graph->getPackages() as $package) {
+            $output->writeLn("Package: <info>" . $package->getFqpn() . '</info>');
+            foreach ($package->getNodes() as $node) {
+                $output->writeLn("   <comment>" . $node->getFqnn() . '</comment>');
+            }
         }
     }
 }

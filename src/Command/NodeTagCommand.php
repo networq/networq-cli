@@ -11,16 +11,21 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class GraphNodeCommand extends Command
+class NodeTagCommand extends Command
 {
     public function configure()
     {
-        $this->setName('graph:node')
-            ->setDescription('View a node')
+        $this->setName('node:tag')
+            ->setDescription('Tag a node')
             ->addArgument(
                 'fqnn',
                 InputArgument::REQUIRED,
-                'Fully Qualified Node Node (FQNN)'
+                'Fully Qualified Node Name (FQNN)'
+            )
+            ->addArgument(
+                'fqtn',
+                InputArgument::REQUIRED,
+                'Fully Qualified Type Name (FQTN)'
             )
             ->addOption(
                 'path',
@@ -34,6 +39,7 @@ class GraphNodeCommand extends Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $fqnn = $input->getArgument('fqnn');
+        $fqtn = $input->getArgument('fqtn');
         $path = $input->getOption('path');
         if ($path) {
             chdir($path);
@@ -44,15 +50,6 @@ class GraphNodeCommand extends Command
         $loader = new GraphLoader();
         $graph = $loader->load($workingDir . '/package.yaml');
         $node = $graph->getNode($fqnn);
-        foreach ($node->getTags() as $tag) {
-            $output->writeLn('<info>' . $tag->getType()->getFqtn() . '</info>');
-            foreach ($tag->getProperties() as $p) {
-                $value = $p->getValueString();
-                $output->writeLn(' - <info>' . $p->getField()->getName() . '</info> <comment>' . $value . '</comment>');
-            }
-        }
-
-
-        exit("DONE" . PHP_EOL);
+        $graph->tagNode($node, $fqtn);
     }
 }

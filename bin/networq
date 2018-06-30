@@ -30,12 +30,13 @@ if (file_exists($filename)) {
     $dotenv->load($filename);
 }
 
-
 $application = new Application('Networq', '1.0.0');
 $application->setCatchExceptions(true);
 $application->add(new \Networq\Cli\Command\PackageCommand());
 $application->add(new \Networq\Cli\Command\InstallCommand());
 $application->add(new \Networq\Cli\Command\LinkCommand());
-$application->add(new \Networq\Cli\Command\GraphNodesCommand());
-$application->add(new \Networq\Cli\Command\GraphNodeCommand());
+$application->add(new \Networq\Cli\Command\NodeListCommand());
+$application->add(new \Networq\Cli\Command\NodeViewCommand());
+$application->add(new \Networq\Cli\Command\NodeTagCommand());
+$application->add(new \Networq\Cli\Command\NodePropertyCommand());
 $application->run();

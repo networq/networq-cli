@@ -58,8 +58,16 @@ then clone this package from `https://github/ownerName/packageName-package`. In 
 To build phar file set _phar.readonly=0_ in php.ini
 
     composer build-phar
-    
-        
+
+## Database Backend
+
+Networq can use a database as a backend to store node data.
+
+To initialize a database with the required schema, use the following command
+
+    $ vendor/bin/dbtk-schema-loader schema:load schema.xml mysql://username:password@localhost/networq --apply
+
+The `networq` command will read the `NETWORQ_PDO` environment variable (predefined, or set in `.env` of the current working directory) for connection details.
 
 ### Development / testing
 
