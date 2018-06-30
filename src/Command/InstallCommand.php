@@ -60,7 +60,7 @@ class InstallCommand extends Command
         foreach ($package->getDependencies() as $dependency) {
             $output->writeLn(' - <info>' . $dependency->getName() . '</info> ' . $dependency->getVersion());
             $path = getcwd() . '/packages/' . str_replace(':', '/', $dependency->getName());
-            $url = 'https://github.com/' . str_replace(':', '/', $dependency->getName() . '-package');
+            $url = 'https://github.com/' . str_replace(':', '/', $dependency->getName() . '-nqp');
             $output->writeLn('   Path: ' . $path);
             $output->writeLn('   Url: ' . $url);
 
