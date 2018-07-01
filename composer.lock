@@ -591,16 +591,16 @@
         },
         {
             "name": "networq/networq",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/networq/networq-php.git",
-                "reference": "de8aaa3211879d61a38fcac45a200f3692581ab8"
+                "reference": "381db18267823094e78966b43da5735bc725dbff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/networq/networq-php/zipball/de8aaa3211879d61a38fcac45a200f3692581ab8",
-                "reference": "de8aaa3211879d61a38fcac45a200f3692581ab8",
+                "url": "https://api.github.com/repos/networq/networq-php/zipball/381db18267823094e78966b43da5735bc725dbff",
+                "reference": "381db18267823094e78966b43da5735bc725dbff",
                 "shasum": ""
             },
             "require": {
@@ -632,7 +632,7 @@
                 "networq",
                 "node"
             ],
-            "time": "2018-06-30T11:57:52+00:00"
+            "time": "2018-07-01T12:49:40+00:00"
         },
         {
             "name": "symfony/console",
