@@ -48,18 +48,16 @@ The packages are installed using git. If the package is not yet installed, it wi
 
 This means that `networq install` will always make sure you have the latest versions of all of your dependencies.
 
-### Package naming + repository naming
+### Package naming + repository naming (-nqp)
 
 Dependencies are listed as `ownerName/packageName`, i.e. `acme/cooking`. The package manager will
-then clone this package from `https://github/ownerName/packageName-package`. In this case `https://github.com/acme/cooking-package`.
+then clone this package from `https://github/ownerName/packageName-nqp`. In this case `https://github.com/acme/cooking-nqp`.
 
 ### Build phar
 
 To build phar file set _phar.readonly=0_ in php.ini
 
     composer build-phar
-    
-        
 
 ### Development / testing
 
