@@ -24,7 +24,8 @@
     "require-dev": {
         "linkorb/autotune": "^1.0",
         "seld/phar-utils": "^1.0",
-        "symfony/finder": "^4.1"
+        "symfony/finder": "^4.1",
+        "phpro/grumphp": "^0.14.1"
     },
     "autoload": {
         "psr-4": {
