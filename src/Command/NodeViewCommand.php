@@ -20,7 +20,7 @@ class NodeViewCommand extends Command
             ->addArgument(
                 'fqnn',
                 InputArgument::REQUIRED,
-                'Fully Qualified Node Node (FQNN)'
+                'Fully Qualified Node Name (FQNN)'
             )
             ->addOption(
                 'path',
