@@ -38,4 +38,5 @@ $application->add(new \Networq\Cli\Command\LinkCommand());
 $application->add(new \Networq\Cli\Command\NodeListCommand());
 $application->add(new \Networq\Cli\Command\NodeViewCommand());
 $application->add(new \Networq\Cli\Command\NodePersistCommand());
+$application->add(new \Networq\Cli\Command\NodeImportCommand());
 $application->run();
