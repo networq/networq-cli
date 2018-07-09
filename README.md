@@ -1,6 +1,8 @@
 Networq CLI
 ===========
 
+[![CircleCI](https://circleci.com/gh/networq/networq-cli.svg?style=svg)](https://circleci.com/gh/networq/networq-cli)
+
 Command-line utilities + package manager for your [Networq](https://github.com/networq) projects
 
 ## Usage
